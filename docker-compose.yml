@@ -1,0 +1,106 @@
+services:
+  # User Service
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: ./Dockerfile
+    container_name: user-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/user_db?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin123
+    depends_on:
+      - mysql
+    volumes:
+      - ./user-service:/usr/src/app
+    ports:
+      - "8081:8081"
+    networks:
+      - backend
+
+  # Hotel Service
+  hotel-service:
+    build:
+      context: ./hotel-service
+      dockerfile: ./Dockerfile
+    container_name: hotel-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/hotel_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin123
+    depends_on:
+      - postgres
+    volumes:
+      - ./hotel-service:/usr/src/app
+    ports:
+      - "8082:8082"
+    networks:
+      - backend
+
+  # Ratings Service
+  ratings-service:
+    build:
+      context: ./ratings-service
+      dockerfile: ./Dockerfile
+    container_name: ratings-service
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/ratings_db
+    depends_on:
+      - mongodb
+    volumes:
+      - ./ratings-service:/usr/src/app
+    ports:
+      - "8083:8083"
+    networks:
+      - backend
+
+  # MySQL Database for User Service
+  mysql:
+    build:
+      context: ./user-service
+      dockerfile: ./Dockerfile_MySql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user_db
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+
+  # MongoDB Database for Ratings Service
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    volumes:
+      - ./mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+
+  # PostgreSQL Database for Hotel Service
+  postgres:
+    build:
+      context: ./hotel-service
+      dockerfile: ./Dockerfile_PG
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: hotel_db
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  mongo_data:
+  postgres_data:

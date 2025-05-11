@@ -1,0 +1,11 @@
+FROM mysql:8.0
+
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=userdb
+ENV MYSQL_USER=admin 
+ENV MYSQL_PASSWORD=admin123 
+
+EXPOSE 3306
+
+
+ENTRYPOINT ["/entrypoint.sh", "mysqld"]

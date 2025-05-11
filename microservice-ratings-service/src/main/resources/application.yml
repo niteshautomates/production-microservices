@@ -1,0 +1,18 @@
+server:
+  port: 8083
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongodb-svc:27017/ratings-db
+      database: ratings-db
+      port: 27017
+
+
+
+
+  application:
+    name: RATING-SERVICE
+  
+#  config:
+#    import: configserver:http://localhost:8888/

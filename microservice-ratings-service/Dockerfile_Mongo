@@ -1,0 +1,11 @@
+FROM mongo
+
+# Set environment variables for MongoDB configuration
+ENV MONGO_INITDB_ROOT_USERNAME=ratingsuser
+ENV MONGO_INITDB_ROOT_PASSWORD=admin123
+
+# Expose the default MongoDB port
+EXPOSE 27017
+
+# Command to start MongoDB with the replica set configuration.
+CMD ["mongod", "--bind_ip_all"]

@@ -1,4 +1,4 @@
-    DO $$
+DO $$
      BEGIN
          -- Check if the user 'postgres' exists, and create it if it doesn't.
          IF NOT EXISTS (SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = 'postgres') THEN

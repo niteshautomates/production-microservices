@@ -11,6 +11,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=admin123
     depends_on:
       - mysql
+      - postgres
+      - hotel-service
     volumes:
       - ./user-service:/usr/src/app
     ports:
@@ -59,6 +61,7 @@ services:
     build:
       context: ./user-service
       dockerfile: ./Dockerfile_MySql
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: user_db
@@ -85,6 +88,7 @@ services:
     build:
       context: ./hotel-service
       dockerfile: ./Dockerfile_PG
+    container_name: pg-svc
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root

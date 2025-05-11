@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RestTemplate restTemplate;
 
-
     @Autowired
     private HotelService hotelService;
 
@@ -52,44 +51,35 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String userId) {
-
-        // get user from databas ewith the help of user repository
+        // get user from database with the help of user repository
         User user = userRepositry.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("Usre with given Id is not found" + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("User with given Id is not found: " + userId));
 
-        // fetch rating of the above usre from rating service
+        // fetch rating of the above user from rating service
         // localhost:8083/ratings/users/708b95a6-b65a-4a07-a987-68a4e40aa124
-
         Rating[] ratingsOfUser = restTemplate.getForObject(
                 "http://RATINGSERVICE/ratings/users/" + user.getUserId(), Rating[].class);
-
         List<Rating> ratings = Arrays.stream(ratingsOfUser).toList();
 
         @SuppressWarnings("null")
         List<Rating> ratingList = ratings.stream().map(rating -> {
-
             // http://localhost:8082/hotels/f408a300-19d9-4924-a8e4-ae2ff1e79fb7
-            //ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTELSERVICE/hotels/" + rating.getHotelId(), Hotel.class);
-
-            Hotel hotel = hotelService.getHotel(rating.getHotelId());
- 
-            // logger.info("Response status code: {}", forEntity.getStatusCode());
-            // logger.info("Name: {}",forEntity.getBody().getName());
-            // logger.info("Hotel Id: {}",forEntity.getBody().getHotelId());
-            // logger.info("Location: {}",forEntity.getBody().getLocation());
-            
-  
-
-
-            rating.setHotel(hotel);
-
+            // ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTELSERVICE/hotels/" + rating.getHotelId(), Hotel.class);
+            try {
+                Hotel hotel = hotelService.getHotel(rating.getHotelId());
+                rating.setHotel(hotel);
+            } catch (Exception e) {
+                logger.error("Error fetching hotel details for hotel ID: {}", rating.getHotelId(), e);
+                // Handle the error appropriately.  You might want to:
+                // 1.  Set the hotel to null or a default value.
+                // 2.  Create a dummy Hotel object.
+                // 3.  Rethrow a more specific exception.
+                // For this example, I'll set the hotel to null.
+                rating.setHotel(null);
+            }
             return rating;
-
         }).collect(Collectors.toList());
         user.setRatings(ratingList);
-
         return user;
-
     }
-
 }

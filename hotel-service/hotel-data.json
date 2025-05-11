@@ -1,0 +1,33 @@
+[
+    {
+      "hotelId": "h101",
+      "name": "Sunshine Suites",
+      "location": "Koregaon Park, Pune",
+      "about": "A vibrant hotel near South Beach."
+    },
+    {
+      "hotelId": "h202",
+      "name": "Mountain View Lodge",
+      "location": "Shivaji Nagar, Pune",
+      "about": "Cozy lodge with stunning mountain views."
+    },
+    {
+      "hotelId": "h303",
+      "name": "City Center Hotel",
+      "location": "Viman Nagar, Pune",
+      "about": "Luxury hotel in the heart of Manhattan."
+    },
+    {
+      "hotelId": "h404",
+      "name": "Oceanfront Resort",
+      "location": "Baner, Pune",
+      "about": "Relaxing resort on the Pacific coast."
+    },
+    {
+      "hotelId": "h505",
+      "name": "Historic Inn",
+      "location": "Kothrud, Pune",
+      "about": "Charming inn in the historic district."
+    }
+  ]
+  

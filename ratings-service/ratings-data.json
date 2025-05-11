@@ -1,0 +1,59 @@
+[
+    {
+      "ratingId": "r101",
+      "userId": "07c2c963-ad1e-412f-a870-0c008196c65b",
+      "hotelId": "b618a4ae-5dc4-47e3-be95-4cf8d418deff",
+      "ratings": 5,
+      "feedback": "Excellent service and stay."
+    },
+    {
+      "ratingId": "r102",
+      "userId": "22c1114c-fdd2-42b6-850c-15a6b3306d4f",
+      "hotelId": "aa184eed-06a0-49a3-b380-59482bf32864",
+      "ratings": 4,
+      "feedback": "Very comfortable and clean."
+    },
+    {
+      "ratingId": "r103",
+      "userId": "632e91e4-57a8-4984-8a0c-1f25eb9a0d92",
+      "hotelId": "2f3bb4f7-814a-4af3-a062-a43e9cb18405",
+      "ratings": 3,
+      "feedback": "Good location, decent stay."
+    },
+    {
+      "ratingId": "r104",
+      "userId": "8efecaca-2eb5-4f51-9770-2171ca6599f6",
+      "hotelId": "72ad8963-bb9b-45cb-ba70-cf1dff4ec4c3",
+      "ratings": 2,
+      "feedback": "Needs improvement in amenities."
+    },
+    {
+      "ratingId": "r105",
+      "userId": "968ed16b-8b9c-4eb0-a521-3ceb573b121e",
+      "hotelId": "ce376a52-1550-42dd-9a34-bd3950a62095",
+      "ratings": 1,
+      "feedback": "Poor experience, not recommended."
+    },
+    {
+      "ratingId": "r106",
+      "userId": "b783b747-6c33-4fe1-b6c7-ddb0208dadc9",
+      "hotelId": "f1a2328b-8cfe-461f-abd7-4c6a6902f00e",
+      "ratings": 5,
+      "feedback": "Exceptional service and facilities."
+    },
+    {
+      "ratingId": "r107",
+      "userId": "07c2c963-ad1e-412f-a870-0c008196c65b",
+      "hotelId": "2076b38a-0cd5-42e5-9f66-4a1d2a8d3b9c",
+      "ratings": 4,
+      "feedback": "Clean rooms and friendly staff."
+    },
+    {
+      "ratingId": "r108",
+      "userId": "22c1114c-fdd2-42b6-850c-15a6b3306d4f",
+      "hotelId": "d59ba425-b74f-4310-a99d-b4946831b241",
+      "ratings": 3,
+      "feedback": "Average stay, nothing special."
+    }
+  ]
+  

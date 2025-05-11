@@ -90,8 +90,8 @@ services:
       dockerfile: ./Dockerfile_PG
     container_name: pg-svc
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
       POSTGRES_DB: hotel_db
     volumes:
       - ./postgres_data:/var/lib/postgresql/data

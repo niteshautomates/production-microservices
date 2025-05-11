@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://pg-svc:5432/hoteldb
+    url: jdbc:postgresql://pg-svc:5432/hoteldb?options=-c search_path=public
     username: postgres
     password: admin123
   jpa:
